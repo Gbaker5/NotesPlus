@@ -4,9 +4,12 @@ const session = require("express-session");
 const connectDB = require('./config/database')
 const MongoStore = require("connect-mongo");
 const mongoose = require("mongoose");
+const passport = require("passport"); // ✅ ADD THIS
+require("./middleware/passport")(passport); // ✅ LOAD PASSPORT CONFIG
+
 
 const homeRoutes = require('./routes/home')
-const todoRoutes = require('./routes/todos')
+//const todoRoutes = require('./routes/todos')
 
 require('dotenv').config({path: './config/.env'})
 
@@ -29,6 +32,14 @@ app.use(
       }),
     })
   );
+
+  // ✅ Passport middleware (must come AFTER session)
+app.use(passport.initialize())
+app.use(passport.session())
+
+const flash = require("connect-flash");
+app.use(flash());
+
 
 app.use('/', homeRoutes)
 //app.use('/todos', todoRoutes)

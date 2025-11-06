@@ -7,13 +7,8 @@
     <title>NotePlus (plus sign here)</title>
 </head>
 <body>
-   <header>
-  <h1>NotePlus + AI Assist</h1>
-</header>
 
-<div class="neu-card">
-
- <!--Error Meeesages-->
+	 <!--Error Meeesages-->
                         <% if (locals.messages.errors) { %>
                             <% messages.errors.forEach( el => { %>
                                 <div class="alert alert-danger"><%= el.msg %></div>
@@ -25,22 +20,24 @@
                             <% }) %>    
                         <% } %>
                         <!---->
-<form action="/login" method="POST">
+   <header>
+  <h1>Create Your NotePlus Account</h1>
+</header>
 
+<div class="neu-card">
+<form action="/signup" method="POST">
+
+  <input type="text" name="userName" placeholder="Username">
   <input type="email" name="email" placeholder="Email">
   <input type="password" name="password" placeholder="Password">
+  <input type="password" name="confirmPassword" placeholder="Confirm Password">
 
-  <input type="submit" value="Login">
+  <input type="submit" value="Signup">
 
 </form>
 
-<a href="/signup">Create an Account</a>
+<a href="/">Already have an account? Login</a>
 </div>
-
-
-
-   
-</body>
 
    
 </body>

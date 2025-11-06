@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Profile</title>
+</head>
+<body>
+<header>
+  <h1>Your Notes</h1>
+</header>
+
+<div class="container">
+
+  <!-- NOTES SECTION -->
+  <div class="left">
+    <div class="neu-section">
+      <h2>Create Note</h2>
+      <form action="/postNote" method="POST">
+        <textarea name="noteText" placeholder="Write a note..."></textarea>
+        <button type="submit">Add Note</button>
+      </form>
+    </div>
+
+    <div class="neu-section scrollbox">
+      <ul class="notes-list">
+        <% if(notes.length === 0){ %>
+          <p>No Notes Available</p>
+        <% } else { %>
+          <% notes.forEach(note => { %>
+            <li class="notes-card">
+                <p class="green">Created: <%= note.createdAt %></p>
+                <p class="green">Edited: <%= note.updatedAt %></p>
+                <p class=""><%= note.note %></p>
+            </li>
+          <% }) %>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+
+  <!-- GEMINI SECTION -->
+  <div class="right">
+    <div class="neu-section">
+      <h2>AI Assistant</h2>
+      <form action="/postPrompt" method="POST">
+        <input type="text" name="geminiPrompt" placeholder="Ask Gemini...">
+        <button type="submit">Ask</button>
+      </form>
+    </div>
+
+    <div class="neu-section scrollbox">
+      <ul class="gemini-list">
+        <% if(gemini.length === 0){ %>
+          <p>No Entries</p>
+        <% } else { %>
+          <% gemini.forEach(g => { %>
+            <li class="gemini-card">
+              <p><%= g.prompt %></p>
+              <p><%= g.result %></p>
+            </li>
+          <% }) %>
+        <% } %>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- Floating Add Note Button -->
+<a class="fab" href="#noteText">+</a>
+
+</body>
+
+</html>

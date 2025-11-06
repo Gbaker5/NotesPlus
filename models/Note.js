@@ -1,12 +1,7 @@
 const mongoose = require('mongoose')
 
-const PromptResultSchema = new mongoose.Schema({
-
-  prompt: {
-    type: String,
-    required: true,
-  },
-  result: {
+const NoteSchema = new mongoose.Schema({
+  note: {
     type: String,
     required: true,
   },
@@ -14,6 +9,7 @@ const PromptResultSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User", //user id created from user.js 
   }
+ 
 },{timestamps:true})
 
-module.exports = mongoose.model('PromptResult', PromptResultSchema)
+module.exports = mongoose.model('Note', NoteSchema)
