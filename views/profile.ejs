@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Racing+Sans+One&display=swap" rel="stylesheet">
     <title>Profile</title>
 </head>
 <body>
+
+<nav>
+<ul class="nav-ct">
+  <li><span class="racing-sans">Welcome, </span><span class="green funnel-sans"><%=user[0].userName%></span></li>
+  <li><p>NotesPlus</p></li>
+  <li><a class="logout" href="/logout">Logout</a></li>
+</ul>
+</nav>
+
 <header>
   <h1>Your Notes</h1>
 </header>
+
+ 
 
 <div class="container">
 
@@ -18,7 +32,7 @@
     <div class="neu-section">
       <h2>Create Note</h2>
       <form action="/postNote" method="POST">
-        <textarea name="noteText" placeholder="Write a note..."></textarea>
+        <textarea id="noteText" name="noteText" placeholder="Write a note..."></textarea>
         <button type="submit">Add Note</button>
       </form>
     </div>
@@ -30,9 +44,9 @@
         <% } else { %>
           <% notes.forEach(note => { %>
             <li class="notes-card">
-                <p class="green">Created: <%= note.createdAt %></p>
-                <p class="green">Edited: <%= note.updatedAt %></p>
+                <p class="green">Created: <%= new Date(note.createdAt).toLocaleString() %></p>
                 <p class=""><%= note.note %></p>
+                <p class="green">Updated: <%= new Date(note.updatedAt).toLocaleString() %></p>
             </li>
           <% }) %>
         <% } %>
@@ -57,7 +71,7 @@
         <% } else { %>
           <% gemini.forEach(g => { %>
             <li class="gemini-card">
-              <p><%= g.prompt %></p>
+              <p class="green"><%= g.prompt %>: </p>
               <p><%= g.result %></p>
             </li>
           <% }) %>

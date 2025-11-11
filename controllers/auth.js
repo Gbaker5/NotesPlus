@@ -87,6 +87,7 @@ exports.getSignup = (req, res) => {
     return res.redirect("/profile");
   }
   res.render("signup", {
+    messages: req.flash("error") ,
     title: "Create Account",
   });
 };

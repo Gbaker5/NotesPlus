@@ -22,6 +22,60 @@ header h1 {
   font-weight: 700;
 }
 
+header{
+  margin-bottom: 20px;
+}
+
+
+nav{
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.nav-ct{
+ 
+  width: 100%;
+  height: 100px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-ct> li >span, .nav-ct >li a{
+  font-size: 1.7rem;
+}
+
+.nav-ct li{
+  width: 30%;
+ border: 1px solid white;
+}
+
+.racing-sans{
+  font-family: "Racing Sans One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+.funnel-sans {
+  font-family: "Funnel Display", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+h2{
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 /* Neumorphism Core */
 .neu-card {
   background: #1c1c1c;
@@ -55,7 +109,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Buttons */
-button, input[type="submit"], .cta-btn {
+button, input[type="submit"], .cta-btn, .logout {
   width: 100%;
   background: #1d9c61;
   border: none;

@@ -11,17 +11,20 @@ module.exports = {
 
     getProfile: async (req,res) => {
 
+        const thisUser = await User.find({_id: req.user._id})
+        //console.log(thisUser)
+
         const myNotes = await Notes.find({author: req.user._id}).sort({createdAt:"asc"}) 
-        console.log(myNotes)
+        //console.log(myNotes)
         //console.log(req.user._id)
-
-
+       
         const Prompts = await PromptResult.find({author: req.user._id}).sort({createdAt: "asc"})
         //console.log(Prompts)
 
 
         res.render('profile.ejs', 
             {
+            user:thisUser,
             notes: myNotes,
             gemini: Prompts,
             messages: req.flash("error") ,
